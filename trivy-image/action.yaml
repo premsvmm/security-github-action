@@ -31,3 +31,8 @@ trivy-image:
         apt-get install jq -y
         sleep 5
         cat trivy-results.json
+
+    - name : push result to defect dojo
+      run:
+        using: 'docker'
+        image: 'Dockerfile'
