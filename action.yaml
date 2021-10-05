@@ -1,20 +1,17 @@
-description: "Security action to perfrom on CI pipeline"
 name: security-github-action
+description: "Security action to perfrom on CI pipeline"
 runs:
+  steps:
   semgrep:
     name: Semgrep
-    runs-on:
-      - self-hosted
+    runs-on: [ self-hosted]
     uses: ./semgrep
-  steps: ~
   trivy-config:
     name: trivy-config
-    runs-on:
-      - self-hosted
+    runs-on: [ self-hosted]
     uses: ./trivy-image
   trivy-image:
     name: trivy-image
-    runs-on:
-      - self-hosted
+    runs-on: [ self-hosted]
     uses: ./trivy-image
   using: composite
