@@ -1,0 +1,8 @@
+name: "security-github-action"
+description: "Security action to perfrom on CI pipeline"
+on: [push]
+jobs:
+  semgrep:
+    runs-on: [self-hosted]
+    name: Semgrep
+    uses: ./semgrep/semgrep-action.yaml
