@@ -5,4 +5,4 @@ jobs:
   semgrep:
     runs-on: [self-hosted]
     name: Semgrep
-    uses: ./semgrep/semgrep-action.yaml
+    uses: ./semgrep
