@@ -3,5 +3,5 @@ description: "Security action to perfrom on CI pipeline"
 runs:
   using: "composite"
   steps:
-    - run: script.sh
+    - run: sh script.sh
       shell: bash
