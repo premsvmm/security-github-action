@@ -3,5 +3,5 @@ WORKDIR /app
 COPY . .
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["sh","entrypoint.sh"]
-RUN PWD
+RUN pwd
 RUN ls
