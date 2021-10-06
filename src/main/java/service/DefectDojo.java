@@ -11,11 +11,11 @@ public interface DefectDojo {
 
     public void uploadScan(ImportScanDTO importScanDTO);
 
-    public String getTestRunName(RunType runType);
+    public String getTestRunName();
 
     public Boolean validateProductExists(String productName);
 
-    public Boolean validateEngagementPresent(RunType runType);
+    public Boolean validateEngagementPresent();
 
     public Boolean closeEngagement(Integer engagementId);
 

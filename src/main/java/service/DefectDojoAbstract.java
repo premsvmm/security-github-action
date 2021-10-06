@@ -2,23 +2,26 @@ package service;
 
 import controller.Constants;
 import dto.ProductDTO;
+import dto.defectdojo.CreateEngagementDTO;
+import dto.defectdojo.ImportScanDTO;
 import enums.RunType;
 import impl.DefectDojoImpl;
 import lombok.Data;
 
 @Data
 public abstract class DefectDojoAbstract implements DefectDojo {
+    protected RunType runType;
     protected DefectDojoImpl defectDojo;
     protected Integer productId;
     protected Integer engagementId;
     protected String engagementStatus;
 
-    public String getTestRunName(RunType runType) {
+    public String getTestRunName() {
         return runType.getRunType() + " : " + Constants.GITHUB_REPOSITORY + "/" + Constants.GITHUB_REF;
     }
 
-    public Boolean validateEngagementPresent(RunType runType) {
-        ProductDTO productDTO = defectDojo.getEngagement(getTestRunName(runType), productId);
+    public Boolean validateEngagementPresent() {
+        ProductDTO productDTO = defectDojo.getEngagement(getTestRunName(), productId);
         if (productDTO.getCount() == 1) {
             engagementId = productDTO.getResults().get(0).getId();
             engagementStatus = productDTO.getResults().get(0).getStatus();
@@ -44,6 +47,15 @@ public abstract class DefectDojoAbstract implements DefectDojo {
 
     public Boolean reopenEngagement(Integer engagementId) {
         return defectDojo.reOpenEngagement(engagementId);
+    }
+
+    public Integer createEngagement(CreateEngagementDTO createEngagementDTO) {
+        CreateEngagementDTO responseEngagement = defectDojo.createEngagement(createEngagementDTO);
+        return responseEngagement.getId();
+    }
+
+    public void uploadScan(ImportScanDTO importScanDTO) {
+        defectDojo.importScan(importScanDTO);
     }
 
 }
