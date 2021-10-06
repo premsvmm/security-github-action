@@ -1,7 +1,7 @@
 name: security-github-action
 description: "Security action to perfrom on CI pipeline"
 runs:
+  using: "composite"
   steps:
-    - uses: ./semgrep
-    - uses: ./trivy-image
-    - uses: ./trivy-image
+    - run: script.sh
+      shell: bash

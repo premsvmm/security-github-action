@@ -1,1 +1,0 @@
-/bin/security-github-action $@
