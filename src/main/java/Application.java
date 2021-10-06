@@ -3,9 +3,16 @@ import enums.ScanRun;
 import service.DefectDojo;
 import service.TrivyScan;
 
+import java.util.Properties;
+
 public class Application {
     public static void main(String[] args) {
         Constants.setProperties();
+        System.out.println("All System Properties");
+        Properties properties = System.getProperties();
+        properties.forEach((k, v) -> System.out.println(k + ":" + v));
+        System.out.println("All Environement Variable");
+        System.out.println(System.getenv());
         uploadReportToDefectDojo();
     }
 
