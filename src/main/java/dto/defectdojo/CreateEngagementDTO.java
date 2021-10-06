@@ -1,6 +1,7 @@
 package dto.defectdojo;
 
 import com.google.gson.annotations.SerializedName;
+import controller.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,14 +28,17 @@ public class CreateEngagementDTO {
     private String engagementType;
     @SerializedName("deduplication_on_engagement")
     private Boolean deduplicationOnEngagement;
+    @SerializedName("commit_hash")
+    private String commitHash;
 
     //response
     private Integer id;
 
-    public CreateEngagementDTO getCreateEngagementDTO(String name, String branchTag, Integer product) {
+    public CreateEngagementDTO getCreateEngagementDTO(String name, Integer product) {
         CreateEngagementDTO.CreateEngagementDTOBuilder createEngagementDTOBuilder = CreateEngagementDTO.builder();
         createEngagementDTOBuilder.name(name);
-        createEngagementDTOBuilder.branchTag(branchTag);
+        createEngagementDTOBuilder.branchTag(Constants.GITHUB_REF);
+        createEngagementDTOBuilder.commitHash(Constants.GITHUB_SHA);
         createEngagementDTOBuilder.product(product);
         createEngagementDTOBuilder.status("In Progress");
         createEngagementDTOBuilder.engagementType("CI/CD");

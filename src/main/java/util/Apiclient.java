@@ -48,6 +48,12 @@ public class Apiclient {
             ApiMultiPartSpecBuilder multiPart = apiRequestSpecification.getMultiPartSpecBuilder();
             requestSpecBuilder.addMultiPart(multiPart.getControlName(), new File(multiPart.getFileName()), multiPart.getMimeType().toString());
         }
+        if(apiRequestSpecification.getPathParams()!=null){
+            requestSpecBuilder.addPathParams(apiRequestSpecification.getPathParams());
+        }
+        if(apiRequestSpecification.getQueryParams()!=null){
+            requestSpecBuilder.addQueryParams(apiRequestSpecification.getQueryParams());
+        }
         System.out.println("**************************************");
         System.out.println("HTTP METHOD " + httpMethod);
         System.out.println("BASE URL " + apiRequestSpecification.getBaseUrl());

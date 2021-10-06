@@ -1,23 +1,41 @@
 import controller.Constants;
-import enums.ScanRun;
-import service.DefectDojo;
-import service.TrivyScan;
-
-import java.util.Properties;
+import dto.defectdojo.CreateEngagementDTO;
+import dto.defectdojo.ImportScanDTO;
+import enums.RunType;
+import service.DefectDojoAbstract;
+import service.DefectDojoFactory;
 
 public class Application {
     public static void main(String[] args) {
-        Constants.setProperties();
-        uploadReportToDefectDojo();
+        try {
+            Constants.setProperties();
+            uploadReportToDefectDojo();
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
     public static void uploadReportToDefectDojo() {
-        switch (Constants.SCAN_RUN) {
-            case TRIVY_IMAGE:
-                DefectDojo defectDojoTrivyScane = new TrivyScan();
-                Integer engementId=defectDojoTrivyScane.createEngagement(defectDojoTrivyScane.getTestRunName(), Constants.BRANCH_TAG, defectDojoTrivyScane.getProductId());
-                defectDojoTrivyScane.uploadScan(ScanRun.TRIVY_IMAGE.getScanType(),engementId,Constants.UPLOAD_FILE_PATH);
-                break;
+        DefectDojoAbstract defectDojo = DefectDojoFactory.getRunType();
+        if (defectDojo.validateProductExists(Constants.GITHUB_REPOSITORY)) {
+            Integer engagementId = null;
+            if (!defectDojo.validateEngagementPresent(RunType.TRIVY_IMAGE)) {
+                CreateEngagementDTO createEngagementDTO = new CreateEngagementDTO().getCreateEngagementDTO(defectDojo.getTestRunName(RunType.TRIVY_IMAGE), defectDojo.getProductId());
+                engagementId = defectDojo.createEngagement(createEngagementDTO);
+            } else {
+                engagementId = defectDojo.getEngagementId();
+                if (defectDojo.getEngagementStatus().equalsIgnoreCase("Completed")) {
+                    defectDojo.reopenEngagement(engagementId);
+                }
+            }
+            ImportScanDTO importScanDTO = new ImportScanDTO(RunType.TRIVY_IMAGE, engagementId);
+            defectDojo.uploadScan(importScanDTO);
+            Boolean result = defectDojo.closeEngagement(engagementId);
+            System.out.println(result == true ? "Engagement closed" : "Engagement Failed to closed");
+        } else {
+            System.out.println("Please Create Project In Defect Dojo For Product : " + Constants.GITHUB_REPOSITORY);
         }
     }
 }

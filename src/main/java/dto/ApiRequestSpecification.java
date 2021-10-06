@@ -15,6 +15,8 @@ public class ApiRequestSpecification {
     private Object body;
     private Map<String, String> header;
     private ContentType contentType;
+    private Map<String, Object> pathParams;
+    private Map<String, Object> queryParams;
     private Map<String, String> formParams;
     private ApiMultiPartSpecBuilder multiPartSpecBuilder;
     private Authorization authorization;
