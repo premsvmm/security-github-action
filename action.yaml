@@ -1,5 +1,7 @@
 name: security-github-action
 description: "Security action to perfrom on CI pipeline"
 runs:
+  using: "composite"
   steps:
-    - run: sh script.sh
+    - run: ${{ github.action_path }}/script.sh
+      shell: bash
