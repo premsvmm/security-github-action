@@ -5,7 +5,7 @@ import enums.ScanRun;
 public class Constants {
     public static String DEFECT_DOJO_BASE_URL;
     public static String DEFECT_DOJO_TOKEN;
-    public static String UPLOAD_FILE_PATH="/Users/prem.kumar/Desktop/razorpay/payment-links/trivy.sarif";
+    public static String UPLOAD_FILE_PATH;
     public static ScanRun SCAN_RUN;
     public static String GITHUB_SHA;
     public static String BRANCH_TAG;
@@ -17,5 +17,6 @@ public class Constants {
         SCAN_RUN = System.getenv("SCAN_RUN") == null ? ScanRun.TRIVY_IMAGE : ScanRun.valueOf(System.getenv("SCAN_RUN").toUpperCase());
         GITHUB_SHA = System.getenv("GITHUB_SHA") == null ? "96a03ab70c18adbb29ce4e5a825a6379acfdacd3" : System.getenv("GITHUB_SHA");
         BRANCH_TAG = System.getenv("BRANCH_TAG") == null ? "security_trivy_integration" : System.getenv("BRANCH_TAG");
+        UPLOAD_FILE_PATH = System.getenv("UPLOAD_FILE_PATH") == null ? "/Users/prem.kumar/Desktop/razorpay/payment-links/trivy.sarif" : System.getenv("UPLOAD_FILE_PATH");
     }
 }

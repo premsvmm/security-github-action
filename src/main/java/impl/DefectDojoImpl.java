@@ -7,7 +7,6 @@ import dto.ApiRequestSpecification;
 import dto.defectdojo.CreateEngagementDTO;
 import dto.defectdojo.ImportScanDTO;
 import enums.HttpMethod;
-import io.restassured.builder.MultiPartSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import util.Apiclient;
