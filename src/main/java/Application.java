@@ -1,6 +1,5 @@
 import controller.Constants;
 import dto.defectdojo.CreateEngagementDTO;
-import dto.defectdojo.FindingsDetailsDTO;
 import dto.defectdojo.ImportScanDTO;
 import exception.ApiException;
 import service.DefectDojoAbstract;
