@@ -12,6 +12,7 @@ exception/ApiException.class
 dto/defectdojo/ImportScanDTO.class
 dto/defectdojo/FindingsDetailsDTO.class
 dto/defectdojo/CreateEngagementDTO.class
+impl/GithubImpl.class
 impl/DefectDojoImpl.class
 dto/defectdojo/CreateEngagementDTO$CreateEngagementDTOBuilder.class
 util/Apiclient$1.class

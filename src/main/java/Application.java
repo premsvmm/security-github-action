@@ -11,8 +11,9 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            System.out.println("PR Number:" + PR_NUM);
             Constants.setProperties();
+            String value = System.getenv("github-token");
+            System.out.println(value.isEmpty());
             uploadReportToDefectDojo();
             System.out.println("SUCCESS");
             System.exit(0);

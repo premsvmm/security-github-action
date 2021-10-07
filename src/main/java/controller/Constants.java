@@ -11,6 +11,9 @@ public class Constants {
     public static String GITHUB_REF;
     public static String GITHUB_REPOSITORY;
     public static String PR_NUM;
+    public static String GITHUB_API_URL;
+    public static String GITHUB_REPOSITORY_WITH_OWNER;
+    public static String GITHUB_TOKEN;
 
     //colour Format
     public static String ANSI_YELLOW = "\u001B[33m";
@@ -26,6 +29,8 @@ public class Constants {
         GITHUB_REF = System.getenv("GITHUB_REF") == null ? "security_trivy_integration" : System.getenv("GITHUB_REF");
         UPLOAD_FILE_PATH = System.getProperty("UPLOAD_FILE_PATH") == null ? "/Users/prem.kumar/Desktop/razorpay/payment-links/trivy-results.sarif" : System.getProperty("UPLOAD_FILE_PATH");
         GITHUB_REPOSITORY = System.getenv("GITHUB_REPOSITORY") == null ? "razorpay/payment-links" : System.getenv("GITHUB_REPOSITORY");
+        GITHUB_REPOSITORY_WITH_OWNER = System.getenv("GITHUB_REPOSITORY") == null ? "razorpay/payment-links" : System.getenv("GITHUB_REPOSITORY");
+        GITHUB_API_URL = System.getenv("GITHUB_API_URL") == null ? "https://api.github.com" : System.getenv("GITHUB_API_URL");
         PR_NUM = System.getProperty("PR_NUM") == null ? "" : System.getProperty("PR_NUM");
 
         //Condition To Format Constants

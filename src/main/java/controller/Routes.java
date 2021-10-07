@@ -9,7 +9,8 @@ public enum Routes {
     DEFECTDOJO_CLOSE_ENGAGEMENT("/api/v2/engagements/%s/close/"),
     DEFECTDOJO_REOPEN_ENGAGEMENT("/api/v2/engagements/%s/reopen/"),
     DEFECTDOJO_FINDINGS("/api/v2/findings"),
-    DEFECTDOJO_IMPORT_SCAN("/api/v2/import-scan/");
+    DEFECTDOJO_IMPORT_SCAN("/api/v2/import-scan/"),
+    GITHUB_REPO_URL("/repos/%s/pulls/%s");
 
 
     @Getter
@@ -21,6 +22,10 @@ public enum Routes {
 
     public String DefectDojoURL(String... args) {
         return Constants.DEFECT_DOJO_BASE_URL + String.format(this.pathVariable, args);
+    }
+
+    public String GithubURL(String... args) {
+        return Constants.GITHUB_API_URL + String.format(this.pathVariable, args);
     }
 
 }
