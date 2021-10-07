@@ -15,15 +15,15 @@ public class Application {
         try {
             Constants.setProperties();
             uploadReportToDefectDojo();
-            System.out.println("SUCCESS");
+            printMessage(true, "success");
             System.exit(0);
         } catch (ApiException e) {
             System.out.println(e.getMessage());
-            System.out.println("FAILED");
+            printMessage(false, "failed");
             System.exit(1);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("FAILED");
+            printMessage(false, "failed");
             System.exit(1);
         }
     }
@@ -70,5 +70,13 @@ public class Application {
     public static void closeEngagement(DefectDojoAbstract defectDojo) {
         Boolean result = defectDojo.closeEngagement(defectDojo.getEngagementId());
         System.out.println(result == true ? ANSI_GREEN_BACKGROUND + "Engagement closed" + ANSI_RESET : ANSI_RED_BACKGROUND + "Engagement Failed to closed" + ANSI_RESET);
+    }
+
+    public static void printMessage(Boolean status, String message) {
+        if (status) {
+            System.out.println(ANSI_GREEN_BACKGROUND + message + ANSI_RESET);
+        } else {
+            System.out.println(ANSI_RED_BACKGROUND + message + ANSI_RESET);
+        }
     }
 }
