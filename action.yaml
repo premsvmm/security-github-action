@@ -4,7 +4,7 @@ inputs:
   github-token:
     required: true
     description: The GitHub token used to create an authenticated client.  Defaults to github provided token.
-    default: ${{ secrets.GIT_TOKEN }}
+    default: ${{ github.token }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
