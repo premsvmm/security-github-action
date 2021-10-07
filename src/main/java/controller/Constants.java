@@ -14,7 +14,6 @@ public class Constants {
     public static String GITHUB_API_URL;
     public static String GITHUB_REPOSITORY_WITH_OWNER;
     public static String GITHUB_TOKEN;
-
     //colour Format
     public static String ANSI_YELLOW = "\u001B[33m";
     public static String ANSI_RESET = "\u001B[0m";
@@ -31,7 +30,8 @@ public class Constants {
         GITHUB_REPOSITORY = System.getenv("GITHUB_REPOSITORY") == null ? "razorpay/payment-links" : System.getenv("GITHUB_REPOSITORY");
         GITHUB_REPOSITORY_WITH_OWNER = System.getenv("GITHUB_REPOSITORY") == null ? "razorpay/payment-links" : System.getenv("GITHUB_REPOSITORY");
         GITHUB_API_URL = System.getenv("GITHUB_API_URL") == null ? "https://api.github.com" : System.getenv("GITHUB_API_URL");
-        PR_NUM = System.getProperty("PR_NUM") == null ? "" : System.getProperty("PR_NUM");
+        GITHUB_TOKEN = System.getProperty("GITHUB_TOKEN") == null ? "" : System.getProperty("GITHUB_TOKEN");
+        PR_NUM = System.getProperty("PR_NUM") == null ? "941" : System.getProperty("PR_NUM");
 
         //Condition To Format Constants
         if (GITHUB_REPOSITORY.contains("/")) {

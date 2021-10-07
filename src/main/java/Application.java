@@ -1,9 +1,11 @@
 import controller.Constants;
 import dto.defectdojo.CreateEngagementDTO;
+import dto.defectdojo.FindingsDetailsDTO;
 import dto.defectdojo.ImportScanDTO;
 import exception.ApiException;
 import service.DefectDojoAbstract;
 import service.DefectDojoFactory;
+import service.GithubService;
 
 import static controller.Constants.*;
 
@@ -12,8 +14,6 @@ public class Application {
     public static void main(String[] args) {
         try {
             Constants.setProperties();
-            String value = System.getenv("github-token");
-            System.out.println(value.isEmpty());
             uploadReportToDefectDojo();
             System.out.println("SUCCESS");
             System.exit(0);
@@ -34,7 +34,9 @@ public class Application {
         createEngagementIfNotPresentAndReturnEngagementId(defectDojo);
         uploadScan(defectDojo);
         closeEngagement(defectDojo);
-        defectDojo.getEngagementFindingCounts();
+        FindingsDetailsDTO findingsDetailsDTO = defectDojo.getEngagementFindingCounts();
+        GithubService githubService = new GithubService();
+        githubService.sentFindingReportDetails(findingsDetailsDTO);
     }
 
     public static void validateProductExists(DefectDojoAbstract defectDojo) throws Exception {

@@ -60,7 +60,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
         defectDojo.importScan(importScanDTO);
     }
 
-    public void getEngagementFindingCounts() throws ApiException {
+    public FindingsDetailsDTO getEngagementFindingCounts() throws ApiException {
         ProductDTO productDTO = defectDojo.getEngagementFindingsCount(engagementId);
         FindingsDetailsDTO findingsDetailsDTO = new FindingsDetailsDTO(productDTO.getResults());
         System.out.println("Critical : " + findingsDetailsDTO.getCriticalCount());
@@ -68,6 +68,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
         System.out.println("Medium : " + findingsDetailsDTO.getMediumCount());
         System.out.println("Low : " + findingsDetailsDTO.getLowCount());
         System.out.println(findingsDetailsDTO.getIssueDetails());
+        return findingsDetailsDTO;
     }
 
 }

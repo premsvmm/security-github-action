@@ -10,7 +10,7 @@ public enum Routes {
     DEFECTDOJO_REOPEN_ENGAGEMENT("/api/v2/engagements/%s/reopen/"),
     DEFECTDOJO_FINDINGS("/api/v2/findings"),
     DEFECTDOJO_IMPORT_SCAN("/api/v2/import-scan/"),
-    GITHUB_REPO_URL("/repos/%s/pulls/%s");
+    GITHUB_COMMENT_ON_REPO("/repos/%s/issues/%s/comments");
 
 
     @Getter

@@ -1,3 +1,4 @@
+service/GithubService.class
 service/DefectDojoFactory$1.class
 util/Utils.class
 service/DefectDojo.class

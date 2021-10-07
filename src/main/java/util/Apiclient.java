@@ -29,9 +29,12 @@ public class Apiclient {
             switch (apiRequestSpecification.getAuthorization()) {
                 case DEFECT_DOJO:
                     headers.put("Authorization", "Token " + Constants.DEFECT_DOJO_TOKEN);
-                    apiRequestSpecification.setHeader(headers);
                     break;
+                case GITHUB:
+                    headers.put("Authorization", "Bearer " + Constants.GITHUB_TOKEN);
+
             }
+            apiRequestSpecification.setHeader(headers);
         }
 
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
@@ -63,7 +66,7 @@ public class Apiclient {
         System.out.println("HEADERS : ");
         for (String key : apiRequestSpecification.getHeader().keySet()) {
             if (!key.equalsIgnoreCase("Authorization"))
-                System.out.print(key + " : " + apiRequestSpecification.getHeader().get(key)+" ");
+                System.out.print(key + " : " + apiRequestSpecification.getHeader().get(key) + " ");
         }
         System.out.println("FORM DATA : " + apiRequestSpecification.getFormParams());
         System.out.println("BODY : " + apiRequestSpecification.getBody());
