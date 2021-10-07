@@ -30,7 +30,7 @@ public class Constants {
         GITHUB_REPOSITORY = System.getenv("GITHUB_REPOSITORY") == null ? "razorpay/payment-links" : System.getenv("GITHUB_REPOSITORY");
         GITHUB_REPOSITORY_WITH_OWNER = System.getenv("GITHUB_REPOSITORY") == null ? "razorpay/payment-links" : System.getenv("GITHUB_REPOSITORY");
         GITHUB_API_URL = System.getenv("GITHUB_API_URL") == null ? "https://api.github.com" : System.getenv("GITHUB_API_URL");
-        GITHUB_TOKEN = System.getProperty("GITHUB_TOKEN") == null ? "" : System.getProperty("GITHUB_TOKEN");
+        GITHUB_TOKEN = System.getProperty("GITHUB_TOKEN") == null ? "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" : System.getProperty("GITHUB_TOKEN");
         PR_NUM = System.getProperty("PR_NUM") == null ? "941" : System.getProperty("PR_NUM");
 
         //Condition To Format Constants

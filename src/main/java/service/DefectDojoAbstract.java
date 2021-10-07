@@ -53,6 +53,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
 
     public Integer createEngagement(CreateEngagementDTO createEngagementDTO) throws ApiException {
         CreateEngagementDTO responseEngagement = defectDojo.createEngagement(createEngagementDTO);
+        engagementId = responseEngagement.getId();
         return responseEngagement.getId();
     }
 
