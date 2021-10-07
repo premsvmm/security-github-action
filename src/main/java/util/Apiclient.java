@@ -60,7 +60,11 @@ public class Apiclient {
         System.out.println("**************************************");
         System.out.println(ANSI_YELLOW + "HTTP METHOD : " + httpMethod + ANSI_RESET);
         System.out.println("BASE URL : " + apiRequestSpecification.getBaseUrl());
-        System.out.println("HEADERS : " + apiRequestSpecification.getHeader());
+        System.out.println("HEADERS : ");
+        for (String key : apiRequestSpecification.getHeader().keySet()) {
+            if (!key.equalsIgnoreCase("Authorization"))
+                System.out.print(key + " : " + apiRequestSpecification.getHeader().get(key)+" ");
+        }
         System.out.println("FORM DATA : " + apiRequestSpecification.getFormParams());
         System.out.println("BODY : " + apiRequestSpecification.getBody());
         return execute(apiRequestSpecification.getBaseUrl(), httpMethod, requestSpecBuilder.build());

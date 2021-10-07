@@ -3,8 +3,10 @@ package service;
 import controller.Constants;
 import dto.ProductDTO;
 import dto.defectdojo.CreateEngagementDTO;
+import dto.defectdojo.FindingsDetailsDTO;
 import dto.defectdojo.ImportScanDTO;
 import enums.RunType;
+import exception.ApiException;
 import impl.DefectDojoImpl;
 import lombok.Data;
 
@@ -20,7 +22,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
         return runType.getRunType() + " : " + Constants.GITHUB_REPOSITORY + "/" + Constants.GITHUB_REF;
     }
 
-    public Boolean validateEngagementPresent() {
+    public Boolean validateEngagementPresent() throws ApiException {
         ProductDTO productDTO = defectDojo.getEngagement(getTestRunName(), productId);
         if (productDTO.getCount() == 1) {
             engagementId = productDTO.getResults().get(0).getId();
@@ -31,7 +33,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
         }
     }
 
-    public Boolean validateProductExists(String productName) {
+    public Boolean validateProductExists(String productName) throws ApiException {
         ProductDTO productDTO = defectDojo.getProduct(productName);
         if (productDTO.getCount() == 1) {
             productId = productDTO.getResults().get(0).getId();
@@ -49,13 +51,23 @@ public abstract class DefectDojoAbstract implements DefectDojo {
         return defectDojo.reOpenEngagement(engagementId);
     }
 
-    public Integer createEngagement(CreateEngagementDTO createEngagementDTO) {
+    public Integer createEngagement(CreateEngagementDTO createEngagementDTO) throws ApiException {
         CreateEngagementDTO responseEngagement = defectDojo.createEngagement(createEngagementDTO);
         return responseEngagement.getId();
     }
 
-    public void uploadScan(ImportScanDTO importScanDTO) {
+    public void uploadScan(ImportScanDTO importScanDTO) throws ApiException {
         defectDojo.importScan(importScanDTO);
+    }
+
+    public void getEngagementFindingCounts() throws ApiException {
+        ProductDTO productDTO = defectDojo.getEngagementFindingsCount(engagementId);
+        FindingsDetailsDTO findingsDetailsDTO = new FindingsDetailsDTO(productDTO.getResults());
+        System.out.println("Critical : " + findingsDetailsDTO.getCriticalCount());
+        System.out.println("High : " + findingsDetailsDTO.getHighCount());
+        System.out.println("Medium : " + findingsDetailsDTO.getMediumCount());
+        System.out.println("Low : " + findingsDetailsDTO.getLowCount());
+        System.out.println(findingsDetailsDTO.getIssueDetails());
     }
 
 }

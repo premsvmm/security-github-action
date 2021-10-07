@@ -11,6 +11,7 @@ import java.util.List;
 public class ProductDTO {
     private Integer count;
     private List<Result> results;
+    private String severity;
 
     @Data
     public class Result {
@@ -20,5 +21,7 @@ public class ProductDTO {
         @SerializedName("prod_type")
         private Integer prodType;
         private String status;
+        private String title;
+        private String severity;
     }
 }

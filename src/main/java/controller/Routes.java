@@ -8,6 +8,7 @@ public enum Routes {
     DEFECTDOJO_GET_ENGAGEMENT("/api/v2/engagements/"),
     DEFECTDOJO_CLOSE_ENGAGEMENT("/api/v2/engagements/%s/close/"),
     DEFECTDOJO_REOPEN_ENGAGEMENT("/api/v2/engagements/%s/reopen/"),
+    DEFECTDOJO_FINDINGS("/api/v2/findings"),
     DEFECTDOJO_IMPORT_SCAN("/api/v2/import-scan/");
 
 
