@@ -18,10 +18,6 @@ public abstract class DefectDojoAbstract implements DefectDojo {
     protected Integer engagementId;
     protected String engagementStatus;
 
-    public String getTestRunName() {
-        return runType.getRunType() + " : " + Constants.GITHUB_REPOSITORY + "/" + Constants.GITHUB_REF;
-    }
-
     public Boolean validateEngagementPresent() throws ApiException {
         ProductDTO productDTO = defectDojo.getEngagement(getTestRunName(), productId);
         if (productDTO.getCount() == 1) {

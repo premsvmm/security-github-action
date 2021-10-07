@@ -35,8 +35,16 @@ public class Application {
         uploadScan(defectDojo);
         closeEngagement(defectDojo);
         FindingsDetailsDTO findingsDetailsDTO = defectDojo.getEngagementFindingCounts();
+        validateGitTokenPresent();
         GithubService githubService = new GithubService();
         githubService.sentFindingReportDetails(findingsDetailsDTO);
+    }
+
+    public static Boolean validateGitTokenPresent() {
+        if (GITHUB_TOKEN != null)
+            return true;
+        else
+            return false;
     }
 
     public static void validateProductExists(DefectDojoAbstract defectDojo) throws Exception {

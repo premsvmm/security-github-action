@@ -1,10 +1,5 @@
 name: security-github-action
 description: "Security action to perfrom on CI pipeline"
-inputs:
-  github-token:
-    required: true
-    description: The GitHub token used to create an authenticated client.  Defaults to github provided token.
-    default: ${{ github.token }}
 runs:
   using: 'docker'
   image: 'Dockerfile'

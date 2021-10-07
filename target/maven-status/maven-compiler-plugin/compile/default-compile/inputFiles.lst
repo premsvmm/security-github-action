@@ -5,6 +5,7 @@
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/service/DefectDojoFactory.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/dto/defectdojo/ImportScanDTO.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/enums/HttpMethod.java
+/Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/service/defectdojo/TrivyFs.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/service/defectdojo/TrivyScan.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/impl/DefectDojoImpl.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/Application.java
@@ -14,6 +15,7 @@
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/util/Utils.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/exception/ApiException.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/enums/RunType.java
+/Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/service/defectdojo/Semgrep.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/service/DefectDojo.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/util/Apiclient.java
 /Users/prem.kumar/Desktop/razorpay/security-github-action/src/main/java/controller/Authorization.java
