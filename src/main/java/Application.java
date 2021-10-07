@@ -1,9 +1,10 @@
 import controller.Constants;
 import dto.defectdojo.CreateEngagementDTO;
 import dto.defectdojo.ImportScanDTO;
-import enums.RunType;
 import service.DefectDojoAbstract;
 import service.DefectDojoFactory;
+
+import static controller.Constants.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,14 +24,14 @@ public class Application {
         Integer engagementId = createEngagementIfNotPresentAndReturnEngagementId(defectDojo);
         uploadScan(defectDojo);
         Boolean result = defectDojo.closeEngagement(engagementId);
-        System.out.println(result == true ? "Engagement closed" : "Engagement Failed to closed");
+        System.out.println(result == true ? ANSI_GREEN_BACKGROUND + "Engagement closed" + ANSI_RESET : ANSI_RED_BACKGROUND + "Engagement Failed to closed" + ANSI_RESET);
     }
 
     public static void validateProductExists(DefectDojoAbstract defectDojo) throws Exception {
         if (defectDojo.validateProductExists(Constants.GITHUB_REPOSITORY)) {
             return;
         }
-        throw new Exception("Please Create Project In Defect Dojo For Product : " + Constants.GITHUB_REPOSITORY);
+        throw new Exception(ANSI_RED_BACKGROUND + "Please Create Project In Defect Dojo For Product : " + Constants.GITHUB_REPOSITORY + ANSI_RESET);
     }
 
     public static Integer createEngagementIfNotPresentAndReturnEngagementId(DefectDojoAbstract defectDojo) {

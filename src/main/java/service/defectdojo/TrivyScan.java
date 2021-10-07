@@ -1,7 +1,5 @@
 package service.defectdojo;
 
-import dto.defectdojo.CreateEngagementDTO;
-import dto.defectdojo.ImportScanDTO;
 import enums.RunType;
 import impl.DefectDojoImpl;
 import service.DefectDojoAbstract;

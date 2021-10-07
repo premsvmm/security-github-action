@@ -13,6 +13,9 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import static controller.Constants.ANSI_RESET;
+import static controller.Constants.ANSI_WHITE_BACKGROUND;
+
 public class Apiclient {
 
     public Response executeRequest(HttpMethod httpMethod, ApiRequestSpecification apiRequestSpecification) {
@@ -48,18 +51,18 @@ public class Apiclient {
             ApiMultiPartSpecBuilder multiPart = apiRequestSpecification.getMultiPartSpecBuilder();
             requestSpecBuilder.addMultiPart(multiPart.getControlName(), new File(multiPart.getFileName()), multiPart.getMimeType().toString());
         }
-        if(apiRequestSpecification.getPathParams()!=null){
+        if (apiRequestSpecification.getPathParams() != null) {
             requestSpecBuilder.addPathParams(apiRequestSpecification.getPathParams());
         }
-        if(apiRequestSpecification.getQueryParams()!=null){
+        if (apiRequestSpecification.getQueryParams() != null) {
             requestSpecBuilder.addQueryParams(apiRequestSpecification.getQueryParams());
         }
         System.out.println("**************************************");
-        System.out.println("HTTP METHOD " + httpMethod);
-        System.out.println("BASE URL " + apiRequestSpecification.getBaseUrl());
-        System.out.println("HEADERS " + apiRequestSpecification.getHeader());
-        System.out.println("FORM DATA " + apiRequestSpecification.getFormParams());
-        System.out.println("BODY " + apiRequestSpecification.getBody());
+        System.out.println(ANSI_WHITE_BACKGROUND + "HTTP METHOD : " + httpMethod + ANSI_RESET);
+        System.out.println("BASE URL : " + apiRequestSpecification.getBaseUrl());
+        System.out.println("HEADERS : " + apiRequestSpecification.getHeader());
+        System.out.println("FORM DATA : " + apiRequestSpecification.getFormParams());
+        System.out.println("BODY : " + apiRequestSpecification.getBody());
         return execute(apiRequestSpecification.getBaseUrl(), httpMethod, requestSpecBuilder.build());
     }
 
@@ -73,7 +76,7 @@ public class Apiclient {
                 response = RestAssured.given().spec(requestSpecification).when().baseUri(baseUrl).get();
                 break;
         }
-        System.out.println("Response:");
+        System.out.println(ANSI_WHITE_BACKGROUND + "Response:" + ANSI_RESET);
         System.out.println(response.getBody().asString());
         return response;
     }
