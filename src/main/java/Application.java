@@ -34,14 +34,19 @@ public class Application {
         createEngagementIfNotPresentAndReturnEngagementId(defectDojo);
         uploadScan(defectDojo);
         closeEngagement(defectDojo);
-        FindingsDetailsDTO findingsDetailsDTO = defectDojo.getEngagementFindingCounts();
-        validateGitTokenPresent();
-        GithubService githubService = new GithubService();
-        githubService.sentFindingReportDetails(findingsDetailsDTO);
+        defectDojo.getEngagementFindingCounts();
+        commentOnPR(defectDojo);
     }
 
-    public static Boolean validateGitTokenPresent() {
-        if (GITHUB_TOKEN != null)
+    public static void commentOnPR(DefectDojoAbstract defectDojo) throws ApiException {
+        if (validateGitTokenAndPRIsPresent()) {
+            GithubService githubService = new GithubService();
+            githubService.sentFindingReportDetails(defectDojo.getFindingsDetailsDTO());
+        }
+    }
+
+    public static Boolean validateGitTokenAndPRIsPresent() {
+        if (GITHUB_TOKEN != null && PR_NUM != null)
             return true;
         else
             return false;

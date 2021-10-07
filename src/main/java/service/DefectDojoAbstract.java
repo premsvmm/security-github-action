@@ -17,12 +17,13 @@ public abstract class DefectDojoAbstract implements DefectDojo {
     protected Integer productId;
     protected Integer engagementId;
     protected String engagementStatus;
+    protected FindingsDetailsDTO findingsDetailsDTO;
 
     public Boolean validateEngagementPresent() throws ApiException {
         ProductDTO productDTO = defectDojo.getEngagement(getTestRunName(), productId);
         if (productDTO.getCount() == 1) {
-            engagementId = productDTO.getResults().get(0).getId();
-            engagementStatus = productDTO.getResults().get(0).getStatus();
+            this.engagementId = productDTO.getResults().get(0).getId();
+            this.engagementStatus = productDTO.getResults().get(0).getStatus();
             return true;
         } else {
             return false;
@@ -32,7 +33,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
     public Boolean validateProductExists(String productName) throws ApiException {
         ProductDTO productDTO = defectDojo.getProduct(productName);
         if (productDTO.getCount() == 1) {
-            productId = productDTO.getResults().get(0).getId();
+            this.productId = productDTO.getResults().get(0).getId();
             return true;
         } else {
             return false;
@@ -65,6 +66,7 @@ public abstract class DefectDojoAbstract implements DefectDojo {
         System.out.println("Medium : " + findingsDetailsDTO.getMediumCount());
         System.out.println("Low : " + findingsDetailsDTO.getLowCount());
         System.out.println(findingsDetailsDTO.getIssueDetails());
+        this.findingsDetailsDTO = findingsDetailsDTO;
         return findingsDetailsDTO;
     }
 
