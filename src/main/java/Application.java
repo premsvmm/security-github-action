@@ -46,7 +46,7 @@ public class Application {
     }
 
     public static Boolean validateGitTokenAndPRIsPresent() {
-        if (GITHUB_TOKEN != null && PR_NUM != null)
+        if ((GITHUB_TOKEN != null && !GITHUB_TOKEN.equalsIgnoreCase(""))  && (PR_NUM != null && !PR_NUM.equalsIgnoreCase("")))
             return true;
         else
             return false;
