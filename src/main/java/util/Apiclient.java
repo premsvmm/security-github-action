@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static controller.Constants.ANSI_RESET;
-import static controller.Constants.ANSI_WHITE_BACKGROUND;
+import static controller.Constants.ANSI_YELLOW;
 
 public class Apiclient {
 
@@ -58,7 +58,7 @@ public class Apiclient {
             requestSpecBuilder.addQueryParams(apiRequestSpecification.getQueryParams());
         }
         System.out.println("**************************************");
-        System.out.println(ANSI_WHITE_BACKGROUND + "HTTP METHOD : " + httpMethod + ANSI_RESET);
+        System.out.println(ANSI_YELLOW + "HTTP METHOD : " + httpMethod + ANSI_RESET);
         System.out.println("BASE URL : " + apiRequestSpecification.getBaseUrl());
         System.out.println("HEADERS : " + apiRequestSpecification.getHeader());
         System.out.println("FORM DATA : " + apiRequestSpecification.getFormParams());
@@ -76,7 +76,7 @@ public class Apiclient {
                 response = RestAssured.given().spec(requestSpecification).when().baseUri(baseUrl).get();
                 break;
         }
-        System.out.println(ANSI_WHITE_BACKGROUND + "Response:" + ANSI_RESET);
+        System.out.println(ANSI_YELLOW + "Response:" + ANSI_RESET);
         System.out.println(response.getBody().asString());
         return response;
     }
