@@ -14,6 +14,7 @@ dto/defectdojo/ImportScanDTO.class
 dto/defectdojo/FindingsDetailsDTO.class
 dto/defectdojo/CreateEngagementDTO.class
 impl/GithubImpl.class
+enums/ProductNameFromRepoName.class
 impl/DefectDojoImpl.class
 dto/defectdojo/CreateEngagementDTO$CreateEngagementDTOBuilder.class
 service/defectdojo/Semgrep.class

@@ -13,6 +13,6 @@ public class TrivyScan extends DefectDojoAbstract {
     }
 
     public String getTestRunName() {
-        return "Trivy Scan" + " : " + Constants.GITHUB_REPOSITORY + "/" + Constants.GITHUB_REF;
+        return "Trivy Scan" + " : " + Constants.GITHUB_REPOSITORY + "/" + Constants.GITHUB_REF + "/" + Constants.IMAGE_TYPE;
     }
 }
